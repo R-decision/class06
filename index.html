@@ -4,7 +4,6 @@
     <title>Limpando e trabalhando os dados</title>
     <meta charset="utf-8" />
     <meta name="author" content=" Renata Oliveira" />
-    <meta name="date" content="2021-02-03" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
@@ -12,7 +11,7 @@
     <script src="libs/panelset/panelset.js"></script>
     <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
     <script src="libs/tile-view/tile-view.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x26dbfabb5db4ed2a7d684dd79c18dec","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xde4e5cdf99941f38d2e02d4ce6c437f","expires":1}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -23,6 +22,10 @@
     <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i>","error":"<i class=\"fa fa-times-circle\" style=\"color: #F94144\"><\/i>"})</script>
     <script src="libs/xaringanExtra_fit-screen/fit-screen.js"></script>
     <link href="libs/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <script src="libs/fabric/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="slides.css" type="text/css" />
   </head>
@@ -31,9 +34,7 @@
 class: center, middle, inverse, title-slide
 
 # Limpando e trabalhando os dados
-## Encontros Síncronos 07
 ### <br></br>Renata Oliveira
-### 02/03/21
 
 ---
 
@@ -45,13 +46,11 @@ layout: true
   
 &lt;div class="my-footer"&gt;
 &lt;span&gt;
-&lt;a href="https://retaoliveira.github.io/places" target="_blank"&gt;https://retaoliveira.github.io/places&lt;/a&gt;
+&lt;a href="https://places.education" target="_blank"&gt;https://places.education&lt;/a&gt;
 &lt;/span&gt;
 &lt;/div&gt; 
 
 ---
-
-
 
 
 
@@ -98,21 +97,6 @@ class: center, middle
 Alison Hill [Teaching in Production](https://rstudio-education.github.io/teaching-in-production/slides/index.html#1)
 ]
 
----
-
-## ggplot2
-
-- ggplot() é a função principal no ggplot2
-- As parcelas são construídas em camadas
-- A estrutura do código para as parcelas pode ser resumida como
-
-
-```r
-ggplot(data = [dataset], 
-       mapping = aes(x = [x-variable], y = [y-variable])) +
-   geom_xxx() +
-   other options
-```
 
 ---
 
@@ -212,7 +196,7 @@ Source: [US Census Fact Finder, General Economic Characteristics, ACS 2017](http
 ```
 ## # A tibble: 3 x 2
 ##   gender    avg_ht
-## * &lt;chr&gt;      &lt;dbl&gt;
+##   &lt;chr&gt;      &lt;dbl&gt;
 ## 1 feminine    165.
 ## 2 masculine   177.
 ## 3 &lt;NA&gt;        181.
@@ -350,22 +334,22 @@ glimpse(hotels)
 ```
 ## Rows: 119,390
 ## Columns: 32
-## $ hotel                          &lt;chr&gt; "Resort Hotel", "Reso...
-## $ is_canceled                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, ...
-## $ lead_time                      &lt;dbl&gt; 342, 737, 7, 13, 14, ...
-## $ arrival_date_year              &lt;dbl&gt; 2015, 2015, 2015, 201...
-## $ arrival_date_month             &lt;chr&gt; "July", "July", "July...
-## $ arrival_date_week_number       &lt;dbl&gt; 27, 27, 27, 27, 27, 2...
-## $ arrival_date_day_of_month      &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, ...
-## $ stays_in_weekend_nights        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, ...
-## $ stays_in_week_nights           &lt;dbl&gt; 0, 0, 1, 1, 2, 2, 2, ...
-## $ adults                         &lt;dbl&gt; 2, 2, 1, 1, 2, 2, 2, ...
-## $ children                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, ...
-## $ babies                         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, ...
-## $ meal                           &lt;chr&gt; "BB", "BB", "BB", "BB...
-## $ country                        &lt;chr&gt; "PRT", "PRT", "GBR", ...
-## $ market_segment                 &lt;chr&gt; "Direct", "Direct", "...
-## $ distribution_channel           &lt;chr&gt; "Direct", "Direct", "...
+## $ hotel                          &lt;chr&gt; "Resort Hotel", "Resort ~
+## $ is_canceled                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, ~
+## $ lead_time                      &lt;dbl&gt; 342, 737, 7, 13, 14, 14,~
+## $ arrival_date_year              &lt;dbl&gt; 2015, 2015, 2015, 2015, ~
+## $ arrival_date_month             &lt;chr&gt; "July", "July", "July", ~
+## $ arrival_date_week_number       &lt;dbl&gt; 27, 27, 27, 27, 27, 27, ~
+## $ arrival_date_day_of_month      &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, ~
+## $ stays_in_weekend_nights        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, ~
+## $ stays_in_week_nights           &lt;dbl&gt; 0, 0, 1, 1, 2, 2, 2, 2, ~
+## $ adults                         &lt;dbl&gt; 2, 2, 1, 1, 2, 2, 2, 2, ~
+## $ children                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, ~
+## $ babies                         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, ~
+## $ meal                           &lt;chr&gt; "BB", "BB", "BB", "BB", ~
+## $ country                        &lt;chr&gt; "PRT", "PRT", "GBR", "GB~
+## $ market_segment                 &lt;chr&gt; "Direct", "Direct", "Dir~
+## $ distribution_channel           &lt;chr&gt; "Direct", "Direct", "Dir~
 ...
 ```
 ]
@@ -807,7 +791,8 @@ ggplot(hotels, aes(x = hotel, fill = deposit_type)) %&gt;%
 ```
 
 ```
-## Error: `mapping` must be created by `aes()`
+## Error in `validate_mapping()`:
+## ! `mapping` must be created by `aes()`
 ## Did you use %&gt;% instead of +?
 ```
 
@@ -819,7 +804,7 @@ ggplot(hotels, aes(x = hotel, fill = deposit_type)) +
   geom_bar()
 ```
 
-&lt;img src="index_files/figure-html/unnamed-chunk-30-1.png" width="25%" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-28-1.png" width="25%" style="display: block; margin: auto;" /&gt;
 ]
 
 ---

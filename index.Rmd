@@ -1,9 +1,7 @@
 ---
 title: "Limpando e trabalhando os dados"
-subtitle: "Encontros Síncronos 07"
 author: 
   - <br></br>Renata Oliveira
-date: '02/03/21'
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -26,9 +24,10 @@ output:
 
 ```{r packages, echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
-library(openintro)
-loans_full_schema <- loans_full_schema %>%
-  mutate(grade = factor(grade, ordered = TRUE))
+library(Tmisc)
+library(emo)
+library(dsbox)
+
 ```
 
 ```{r xaringan-tile-view, echo=FALSE}
@@ -37,11 +36,6 @@ xaringanExtra::use_tile_view()
 
 ```{r xaringan-editable, echo=FALSE}
 xaringanExtra::use_editable(expires = 1)
-```
-
-```{r xaringan-panelset, echo=FALSE, message=FALSE, warning=FALSE}
-xaringanExtra::use_panelset()
-xaringanExtra::style_panelset_tabs(panel_tab_font_family = "sans-serif")
 ```
 
 ```{r xaringanExtra-clipboard, echo=FALSE}
@@ -66,30 +60,8 @@ xaringanExtra::use_extra_styles(
 )
 ```
 
-```{css include=FALSE}
-.panelset {
-   --panel-tab-foreground: currentColor;
-   --panel-tab-background: unset;
-   --panel-tab-active-foreground: currentColor;
-   --panel-tab-active-background: unset;
-   --panel-tab-active-border-color: currentColor;
-   --panel-tab-hover-foreground: currentColor;
-   --panel-tab-hover-background: unset;
-   --panel-tab-hover-border-color: currentColor;
-   --panel-tab-inactive-opacity: 0.5;
-   --panel-tabs-border-bottom: #ddd;
-   --panel-tab-font-family: Sen;
-   --panel-tab-background-color-active: #fffbe0;
-   --panel-tab-border-color-active: #023d4d;
-}
-
-.panelset .panel-tabs .panel-tab > a {
-	color: #023d4d;
-}
-
-.panelset .panel-tabs {
-  font-size: 0.5rem;
-}
+```{r xaringan-scribble, echo=FALSE}
+xaringanExtra::use_scribble()
 ```
 
 
@@ -125,20 +97,6 @@ knitr::include_graphics("img/render.png")
 Alison Hill [Teaching in Production](https://rstudio-education.github.io/teaching-in-production/slides/index.html#1)
 ]
 
----
-
-## ggplot2
-
-- ggplot() é a função principal no ggplot2
-- As parcelas são construídas em camadas
-- A estrutura do código para as parcelas pode ser resumida como
-
-```{r eval = FALSE}
-ggplot(data = [dataset], 
-       mapping = aes(x = [x-variable], y = [y-variable])) +
-   geom_xxx() +
-   other options
-```
 
 ---
 
